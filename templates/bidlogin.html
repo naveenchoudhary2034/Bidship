@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sign in to BidShip</title>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+      <style>
+        body {
+                 margin: 0;
+                 font-family: 'Arial', sans-serif;
+                 display: flex;
+                 height: 100vh;
+                 background-image: linear-gradient(rgba(167, 165, 165, 0.7), rgba(204, 204, 204, 0.7)),url(https://i.ibb.co/rfpfXtV/Screenshot-2024-11-30-165941.png);
+                 background-size: cover;
+                 backface-visibility: visible;
+                 background-repeat: no-repeat;
+                 background-position: center;
+                 color: #000000;
+             }
+             .container {
+                 display: flex;
+                 width: 100%;
+             }
+             .left {
+                 flex: 1;
+                 background: url('https://placehold.co/800x1000') no-repeat center center;
+                 background-size: cover;
+                 position: relative;
+                 border-radius: 10px;
+                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             }
+             .right {
+                 flex: 1;
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1);
+                 border-radius: 20px 0 0 20px;
+             }
+             .form-container {
+                 width: 300px;
+                 text-align: center;
+                 background: transparent;
+                 padding: 40px;
+                 border-radius: 10px;
+             }
+             .form-container h1 {
+                 font-size: 24px;
+                 margin-bottom: 20px;
+                 color: #000;
+             }
+             .divider {
+                 display: flex;
+                 align-items: center;
+                 margin: 20px 0;
+             }
+             .divider::before,
+             .divider::after {
+                 content: '';
+                 flex: 1;
+                 height: 1px;
+                 background: #ddd;
+             }
+             .divider span {
+                 margin: 0 10px;
+                 color: #888;
+             }
+             .input-group {
+                 margin-bottom: 20px;
+                 text-align: left;
+             }
+             .input-group label {
+                 display: block;
+                 margin-bottom: 5px;
+                 font-size: 14px;
+                 color: #000;
+             }
+             .input-group input {
+                 width: 100%;
+                 padding: 10px;
+                 border: 1px solid #ddd;
+                 border-radius: 5px;
+                 font-size: 14px;
+                 background: #fff;
+                 color: #000;
+                 transition: border-color 0.3s;
+             }
+             .input-group input:focus {
+                 border-color: #000;
+                 outline: none;
+             }
+             .forgot-password {
+                 text-align: left;
+                 margin-bottom: 20px;
+             }
+             .forgot-password a {
+                 color: #000000;
+                 text-decoration: none;
+                 font-size: 14px;
+                 cursor: pointer;
+             }
+             .sign-in-btn, .register-btn, .forgot-btn {
+                 width: 100%;
+                 padding: 10px;
+                 background-color: #000;
+                 color: #ffffff;
+                 border: none;
+                 border-radius: 5px;
+                 font-size: 16px;
+                 cursor: pointer;
+                 transition: background-color 0.3s;
+             }
+             .sign-in-btn:hover, .register-btn:hover, .forgot-btn:hover {
+                 background-color: #ddd;
+                 color: #000000;
+             }
+             .sign-up {
+                 margin-top: 20px;
+                 font-size: 14px;
+             }
+             .sign-up a {
+                 color: #000000;
+                 text-decoration: none;
+                 cursor: pointer;
+             }
+             .hidden {
+                 display: none;
+             }
+             .arrow-right {
+                 width: 10;
+                 font-weight: bold;
+             }
+       </style>
+       
+      <script>
+          function showRegister() {
+              document.getElementById('login-form').classList.add('hidden');
+              document.getElementById('register-form').classList.remove('hidden');
+              document.getElementById('forgot-form').classList.add('hidden');
+          }
+  
+          function showLogin() {
+              document.getElementById('register-form').classList.add('hidden'); 
+              document.getElementById('login-form').classList.remove('hidden');
+              document.getElementById('forgot-form').classList.add('hidden');
+          }
+  
+          function showForgot() {
+              document.getElementById('login-form').classList.add('hidden');
+              document.getElementById('register-form').classList.add('hidden');
+              document.getElementById('forgot-form').classList.remove('hidden');
+          }
+      </script>
+  </head>
+  <body>
+  
+  <div class="container">
+     <div class="right">
+      <div class="form-container" id="login-form">
+         <form action="{{ url_for('login') }}" method="POST">
+           <h1><b>Sign in to BidShip</b></h1>
+           
+           <div class="input-group">
+            <label for="username">Username or Email</label>
+            <input id="username" name="username" type="text"/>
+           </div>
+           <div class="input-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password"/>
+           </div>
+           <div class="forgot-password">
+            <a onclick="showForgot()"><u>Forgot?</u></a>
+           </div>
+           <button class="sign-in-btn" type="submit">Sign In</button>
+  
+           <div class="sign-up">
+            Don't have an account? <a onclick="showRegister()">Sign up</a>
+            <a href="index.html" class="arrow-right"><h3>&#8592 Home</h3></a>
+           </div>
+         </form>
+      </div>
+  
+      <div class="form-container hidden" id="register-form">
+        <form action="/register" method="POST">
+            <h1>Register for BidShip</h1>
+            <div class="input-group">
+                <label for="reg-username">Username</label>
+                <input id="reg-username" name="reg-username" type="text" required/>
+            </div>
+            <div class="input-group">
+                <label for="reg-email">Email</label>
+                <input id="reg-email" name="reg-email" type="email" required/>
+            </div>
+            <div class="input-group">
+                <label for="reg-password">Password</label>
+                <input id="reg-password" name="reg-password" type="password" required/>
+            </div>
+            <button class="register-btn" type="submit">Register</button>
+            <div class="sign-up">
+                Already have an account? <a onclick="showLogin()">Sign in</a>
+            </div>
+        </form>
+        
+      </div>
+  
+      <div class="form-container hidden" id="forgot-form">
+       <form action="/forgot" method="POST">
+           <h1>Forgot Password</h1>
+           <div class="input-group">
+            <label for="forgot-email">Email</label>
+            <input id="forgot-email" name="forgot-email" type="email"/>
+           </div>
+           <div class="input-group">
+            <label for="forgot-username">Username</label>
+            <input id="forgot-username" name="forgot-username" type="text"/>
+           </div>
+           <div class="input-group">
+            <label for="forgot-phone">Phone Number</label>
+            <input id="forgot-phone" name="forgot-phone" type="tel"/>
+           </div>
+           <button class="forgot-btn" type="submit">Reset Password</button>
+  
+           <div class="sign-up">
+            Remembered your password? <a onclick="showLogin()">Sign in</a>
+            <a href="index.html" class="arrow-right"><h3>&#8592 Home</h3></a>
+           </div>
+       </form>
+      </div>
+     </div>
+  </div>
+  
+  </body>
+  </html>

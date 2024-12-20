@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://i.ibb.co/rfpfXtV/Screenshot-2024-11-30-165941.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            filter: brightness(1,2);
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            /* max-width: 850px; */
+            margin: 0px auto 20px auto;
+            background-color: rgba(255, 255, 255, 0.77);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 0px 50px 30px 70px;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+            text-align: center;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            padding: 10px;
+            text-align: left;
+        }
+        .table th {
+            font-size: 12px;
+            color: #333;
+            text-transform: uppercase;
+        }
+        .table td {
+            font-size: 14px;
+            color: #333;
+            position: relative;
+        }
+        .table .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        .table .in-progress {
+            background-color: #f4aa9bce;
+            color: #f63c3c;
+        }
+        .details {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #333;
+            display: none; 
+            animation: fadeIn 0.5s;
+        }
+        .details .pickup, .details .dropoff {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px; 
+        }
+        .details .pickup i, .details .dropoff i {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .details .pickup i {
+            color: #28a745;
+        }
+        .details .dropoff i {
+            color: #ff0000;
+        }
+        .details .info {
+            margin-left: 10px;
+        }
+        .details .info p {
+            margin: 0;
+        }
+        .details .info .time {
+            font-weight: bold;
+        }
+        .arrow {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header11">
+    
+            <div style="font-family:yellowtail;font-size: xx-large;"><b><i>BIDSHIP</i></b></div>
+            <div class="nav-links11">
+                <a href="/home">
+                    HOME
+                    </a>
+                 <a href="/about">
+                  ABOUT US
+                 </a>
+                 <a href="service">
+                  SERVICE
+                 </a>
+                
+                 <a href="/location">
+                  LOCATIONS
+                 </a>
+                 <a href="/contact">
+                    CONTACT US
+                   </a>
+                 
+             
+             
+            </div>
+           </div>
+           <style>
+           .header11 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            justify-self: center;
+            padding: 15px 25px;
+            width: 106%;
+            background-color: #fff;
+            border-bottom: 1px solid #eaeaea;
+            
+        }
+        
+        .nav-links11 {
+            margin-left: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            width: 100%;
+        }
+        .nav-links11 a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+        }
+        .nav-links11 .login {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;}
+            
+        </style> 
+        <div class="header">
+            <h1 style="font-size: 48px;">Orders Details</h1>
+        </div>
+       
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>VEHICLE</th>
+                    <th>MOBILE</th>
+                    <th>EMAIL</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            <tbody id="bookings-table">
+                <!-- Dynamic booking data will be injected here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function toggleDetails(event) {
+            const details = event.target.closest('tr').nextElementSibling;
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+                details.style.animation = 'fadeIn 0.5s';
+                event.target.classList.remove('fa-chevron-down');
+                event.target.classList.add('fa-chevron-up');
+
+                setTimeout(() => {
+                    details.style.animation = 'fadeOut 0.5s';
+                    setTimeout(() => {
+                        details.style.display = 'none';
+                        event.target.classList.remove('fa-chevron-up');
+                        event.target.classList.add('fa-chevron-down');
+                    }, 500);
+                }, 5000);
+            } else {
+                details.style.animation = 'fadeOut 0.5s';
+                setTimeout(() => {
+                    details.style.display = 'none';
+                    event.target.classList.remove('fa-chevron-up');
+                    event.target.classList.add('fa-chevron-down');
+                }, 500);
+            }
+        }
+        async function fetchBookings() {
+    console.log("Fetching bookings..."); // Debugging log
+    try {
+        const response = await fetch('/api/getBookings');
+        const bookings = await response.json();
+        console.log(bookings);
+        const tableBody = document.getElementById('bookings-table');
+        
+        // Clear the table before appending new rows
+        tableBody.innerHTML = ''; 
+        console.log("Table cleared"); // Debugging log
+
+        bookings.slice(-12).reverse().forEach(booking => { // Limit to 12 bookings
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <i class="fas fa-chevron-down arrow" onclick="toggleDetails(event)"></i> 
+                    ${booking.firstName} ${booking.lastName}
+                </td>
+                <td>${booking.transport_mode}</td>
+                <td>${booking.mobileNumber}</td>
+                <td>${booking.email}</td>
+                <td><span class="status in-progress">In Progress</span></td>
+            `;
+
+            const detailsRow = document.createElement('tr');
+            detailsRow.classList.add('details');
+            detailsRow.innerHTML = `
+                <td colspan="5">
+                    <div class="pickup">
+                        <i class="fas fa-circle"></i>
+                        <div class="info">
+                            <p class="time">Pickup</p>
+                            <p>${booking.location1}</p>
+                        </div>
+                    </div>
+                    <div class="dropoff">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info">
+                            <p class="time">Drop Off</p>
+                            <p>${booking.location2}</p>
+                        </div>
+                    </div>
+                </td>
+            `;
+
+            // Append the rows to the table body
+            tableBody.appendChild(row);   
+            tableBody.appendChild(detailsRow); 
+        });
+    } catch (error) {
+        alert(`Error fetching bookings: ${error.message}`);
+    }
+}
+
+window.onload = function() {
+    console.log("Page loaded"); // Debugging log
+    fetchBookings();
+};
+
+        
+    </script>
+</body>
+</html>

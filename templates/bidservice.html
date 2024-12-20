@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BidShip Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image:  linear-gradient(rgba(148, 147, 147, 0.7), rgba(149, 147, 147, 0.7)), url(https://i.ibb.co/NSsz7nm/Screenshot-2024-12-01-002446.png);
+            background-size: cover;
+            
+            
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 90%;
+            color: #000000;
+        }
+
+        .container {
+            position: relative;
+            max-width: 900px;
+            background-color:#46a2f3;
+            padding: 0px 30px 40px 30px;
+            border-radius: 20px;
+            
+            margin: 5% auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .container span {
+            font-size: 18px;
+            color: rgb(248, 232, 232);
+        }
+
+        .container:hover {
+            background-color: #62baf8;
+        }
+
+        .container h1 {
+            margin-bottom: 20px;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .container11 {
+            position: relative;
+            max-width: 900px;
+            background-color:#46a2f3;
+            padding: 0px 30px 7px 30px;
+            border-radius: 20px;
+            margin-top: 0%;
+            margin: auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .container11 span {
+            font-size: 18px;
+            color: rgb(248, 232, 232);
+        }
+
+        .container11:hover {
+            background-color: #0095ff;
+        }
+
+        .container11 h1 {
+            margin-bottom: 20px;
+            color: #000000;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        input[type="text"], input[type="tel"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+            background-color: #f1f1f1;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+            background-color: #f1f1f1;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 20px;
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        .result span {
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-container img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s;
+        }
+
+        .icon-container img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container11">
+          
+        <div class="header11">
+            
+            <div style="font-family:yellowtail;font-size: xx-large;"><b><i>BIDSHIP</i></b></div>
+            <div class="nav-links11">
+             <a href="/home">
+                HOME
+                </a>
+                <a href="/about">
+                    ABOUT US
+                   </a>
+                   <a href="/order">
+                    ORDERS
+                   </a>
+             <a href="/contact">
+                CONTACT US
+               </a>
+               <a href="/location">
+                LOCATIONS
+               </a>
+               
+             
+            </div>
+           </div>
+           <style>
+           .header11 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            justify-self: center;
+            padding:15px 25px;
+            width: 180%;
+            background-color: #fff;
+            border-bottom: 1px solid #eaeaea;
+            
+        }
+        
+        .nav-links11 {
+            margin-left: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            width: 100%;
+        }
+        .nav-links11 a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+        }
+        .nav-links11 .login {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;}
+            
+        </style>    
+    
+
+
+    <div class="container">
+  
+
+
+        <h1>Booking</h1>
+
+        <div class="icon-container">
+            <img src="https://img.icons8.com/color/48/truck.png" alt="Truck Icon">
+            <img src="https://img.icons8.com/emoji/48/automobile.png" alt="Car Icon">
+            <img src="https://img.icons8.com/emoji/48/motor-scooter.png" alt="Bike Icon">
+        </div>
+
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" placeholder="Enter your first name">
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" placeholder="Enter your last name">
+        </div>
+
+        <div class="form-group">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="tel" id="mobileNumber" placeholder="Enter your mobile number">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label for="packageDimensions">Package Dimensions (L x B x H):</label>
+            <input type="text" id="packageDimensions" placeholder="Enter package dimensions (L x B x H)">
+        </div>
+
+        <div class="form-group">
+            <label for="packageWeight">Package Weight(kg)</label>
+            <input type="text" id="packageWeight" placeholder="Enter your Package Weight">
+        </div>
+
+        <div class="form-group">
+            <label for="transportMode">Transport Mode:</label>
+            <select id="transportMode">
+                <option value="airplane">Airplane</option>
+                <option value="bicycle">Bicycle</option>
+                <option value="boat">Boat</option>
+                <option value="car">Car</option>
+                <option value="mediumtruck">Medium Truck</option>
+                <option value="motorbike">Motorbike</option>
+                <option value="ship">Ship</option>
+                <option value="train">Train</option>
+                <option value="truck">Truck</option>
+                <option value="van">Van</option>
+            </select>
+        </div>
+
+        
+    <div class="form-group">
+        <label for="location1">Start Location:</label>
+        <input type="text" id="location1" placeholder="Enter starting location">
+    </div>
+
+    <div class="form-group">
+        <label for="location2">Destination Location:</label>
+        <input type="text" id="location2" placeholder="Enter destination location">
+    </div>
+
+    <button class="btn" id="calculateDistance">Calculate Distance</button>
+    <button class="btn" id="bookRide">Book Ride</button>
+    <div class="result" id="result"></div>
+
+    <div class="form-group">
+        <label for="bidamount">Enter Bid Amount:</label>
+        <input id="bidamount" name="bidamount" placeholder="Enter your bid amount greater than minimum amount" type="text" required />
+    </div>
+</div>
+
+<script>
+    // Function to get latitude and longitude using Nominatim API
+    async function getCoordinates(location) {
+        const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json&limit=1`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            if (data && data.length > 0) {
+                return { lat: parseFloat(data[0].lat), lon: parseFloat(data[0].lon) };
+            } else {
+                throw new Error('Location not found');
+            }
+        } catch (error) {
+            alert(`Error: ${error.message}`);
+            return null;
+        }
+    }
+
+    // Function to calculate the distance between two points (Haversine Formula)
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Radius of the Earth in km
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = 
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) + 
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c; // Distance in km
+        
+        return distance.toFixed(2); // Round to 2 decimal places
+    }
+
+    // Event listener for the Calculate Distance button
+    document.getElementById('calculateDistance').addEventListener('click', async () => {
+        const location1 = document.getElementById('location1').value.trim();
+        const location2 = document.getElementById('location2').value.trim();
+
+        if (!location1 || !location2) {
+            alert('Please enter both locations');
+            return;
+        }
+
+        const coordinates1 = await getCoordinates(location1);
+        const coordinates2 = await getCoordinates(location2);
+
+        if (coordinates1 && coordinates2) {
+            const distance = calculateDistance(
+                coordinates1.lat, coordinates1.lon, 
+                coordinates2.lat, coordinates2.lon
+            );
+            calculatedCost = distance * 9; // Cost in rupees
+            document.getElementById('result').innerHTML = 
+                `The distance between <span>${location1}</span> and <span>${location2}</span> is <span>${distance} km</span> which cost <span>₹${calculatedCost.toFixed(2)}</span>.`;
+        }
+        
+    // Check if the bid amount is less than the minimum amount
+    if (bidAmount < minimumAmount) {
+        alert(`Error: The bid amount of ₹${bidAmount} is less than the minimum amount of ₹${minimumAmount.toFixed(2)}.`);
+        return; // Stop further execution
+    }
+
+    });
+
+
+    document.getElementById('bookRide').addEventListener('click', async () => {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const mobileNumber = document.getElementById('mobileNumber').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const packageDimensions = document.getElementById('packageDimensions').value.trim();
+    const transportMode = document.getElementById('transportMode').value;
+    const location1 = document.getElementById('location1').value.trim();
+    const location2 = document.getElementById('location2').value.trim();
+    const bidamount = document.getElementById('bidamount').value.trim();
+
+    if (!firstName || !lastName || !mobileNumber || !email || !packageDimensions || !location1 || !location2) {
+        alert('Please fill out all fields before booking the ride.');
+        return;
+    }
+
+    const bookingData = {
+        firstName,
+        lastName,
+        mobileNumber,
+        email,
+        packageDimensions,
+        transportMode,
+        location1,
+        location2,
+        bidamount
+    };
+
+    try {
+        const response = await fetch('/api/bookRide', {
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bookingData)
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Ride booked successfully!');
+        } else {
+            alert(`Failed to book ride: ${result.message}`);
+        }
+    } catch (error) {
+        alert(`Error booking ride: ${error.message}`);
+    }
+});
+
+
+</script>
+</body>
+</html>
